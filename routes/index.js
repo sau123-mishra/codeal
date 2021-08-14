@@ -1,9 +1,13 @@
 const express=require('express');
 const homeController=require('../controllers/home_controller');
 const router=express.Router();
-// console.log('Router is loaded');
 
 
+// the main index will take you here and from you can furture go
 router.get('/',homeController.home);
-router.get('/fun',homeController.funny);
+router.use('/users',require('./users'));
+// router.use('/posts',require('./posts'));
+
+
+
 module.exports=router;
