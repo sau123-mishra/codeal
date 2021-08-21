@@ -1,14 +1,21 @@
 const express=require('express');
-const port=8000;
-
 const app=express();
+const port=8000;
+const expressLayouts=require('express-ejs-layouts');
+
+app.use(expressLayouts); 
 // usee express router
 // first the browser request will come here after then it will go through routers
 app.use('/',require('./routes'));
 
-//seetup viewengine
+//setup viewengine
+
 app.set('view engine','ejs');
-app.set('path','./views'); 
+app.set('views','./views');
+
+
+ app.set('path','./views'); 
+
 
 
 app.listen(port,function(err){
