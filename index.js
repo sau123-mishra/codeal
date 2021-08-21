@@ -2,8 +2,11 @@ const express=require('express');
 const app=express();
 const port=8000;
 const expressLayouts=require('express-ejs-layouts');
-
-app.use(expressLayouts); 
+const db=require('./config/mongoose');
+app.use(express.static('./assets'));
+app.use(expressLayouts);
+app.set('layout extractStyles',true);
+app.set('layout extractScripts', true) ;
 // usee express router
 // first the browser request will come here after then it will go through routers
 app.use('/',require('./routes'));
