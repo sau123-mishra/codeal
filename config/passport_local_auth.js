@@ -15,7 +15,7 @@ passport.use(new LocalStrategy({
         console.log('invalid user name or password');
         return done(null,false);
       }
-        done(null,user);
+       return done(null,user);
     });
   }
 ))
@@ -52,7 +52,8 @@ passport.setAuthenticatedUser=function(req,res,next){
    if(req.isAuthenticated()){
     //  re.user contains the current signed in user from session cookie and we are just sending this to the locals for the views
      res.locals.user=req.user;
-   }
+    }
+    next();
 }
 
 
